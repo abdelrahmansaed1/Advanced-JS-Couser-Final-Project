@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="styel.css">
+    <title>Document</title>
+    <!-- Import Bootstrap -->
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!-- loader -->
+    <div class="post-loader" id="loader">
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <circle id="test" cx="40" cy="40" r="32"></circle>
+            </svg>
+        </div>
+        <!-- <div class="loader triangle">
+            <svg viewBox="0 0 86 80">
+                <polygon points="43 8 79 72 7 72"></polygon>
+            </svg>
+        </div>
+        
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <rect x="8" y="8" width="64" height="64"></rect>
+            </svg>
+        </div> -->
+    </div>
+    
+    <!--// loader //-->
+    <!-- Header -->
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="col-9">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary rounded shadow pt-3">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="index.html">Tarmeez</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" onclick="profileClicked()" style="cursor: pointer;">Profile</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="login-div" class="d-flex justify-content-end w-100 ">
+                            <button id="login-btn" type="button" data-bs-toggle="modal" data-bs-target="#login-modal" class="btn btn-outline-success mx-2">Login</button>
+                            <button id = 'register-btn' type="button" data-bs-toggle="modal" data-bs-target="#register-modal" class="btn btn-outline-success">Register</button>
+                        </div>
+                        <div id="logout-div" class="d-flex justify-content-end align-items-center gap-2 w-100">
+                            <img id="nav-profile-image" class="rounded-circle image"  src="" alt="">
+                            <b id="nav-username">abood</b>
+                            <button id="logout-btn" type="button" data-bs-toggle="modal"  class="btn btn-outline-danger mx-2">Logout</button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!--// Header //-->
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Posts -->
+        <div class="d-flex justify-content-center mt-5">
+            <div class="col-9">
+                <div id="posts">
+                    <!-- Post -->
+                    <div class="card shadow my-4">
+                        <div class="card-header">
+                            <img class="image rounded-circle" src="./media/avatar-01.png" alt="">
+                            <b>@aboodsaed</b>
+                        </div>
+                        <div class="card-body">
+                            <img class="w-100" src="./media/shuffle-01.jpg" alt="">
+                            <h6 class="text-secondary-emphasis mt-1">2 min ago</h6>
+                            <h4>Hello world</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis labore asperiores voluptatibus quo nesciunt nemo alias a. Veniam, quidem modi aut soluta cupiditate, necessitatibus quod illum corporis rem, tempora nostrum?</p>
+                            <hr>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                                </svg>
+                                <span>(3) Comments
+                                    <span id ="tag-post-${post.id}">
+                                        <button class = "btn btn-sm rounded-5 " style = "background-color: gray; color: white;">
+                                            asdasd
+                                        </button>
+                                        <button class = "btn btn-sm rounded-5 " style = "background-color: gray; color: white;">
+                                            asdasd
+                                        </button>        
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// Post //-->
+                    <!-- Post -->
+                    <div class="card my-4">
+                        <div class="card-header">
+                            <img class="image rounded-circle border border-2" src="./media/avatar-01.png" alt="">
+                            <b>@aboodsaed</b>
+                        </div>
+                        <div class="card-body">
+                            <img class="w-100" src="./media/shuffle-02.jpg" alt="">
+                            <h6 class="text-secondary-emphasis mt-1">2 min ago</h6>
+                            <h4>Hello world</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis labore asperiores voluptatibus quo nesciunt nemo alias a. Veniam, quidem modi aut soluta cupiditate, necessitatibus quod illum corporis rem, tempora nostrum?</p>
+                            <hr>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                                </svg>
+                                <span>(3) Comments</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// Post //-->
+                    <!-- Post -->
+                    <div class="card my-4">
+                        <div class="card-header">
+                            <img class="image rounded-circle border border-2" src="./media/avatar-01.png" alt="">
+                            <b>@aboodsaed</b>
+                        </div>
+                        <div class="card-body">
+                            <img class="w-100" src="./media/shuffle-03.jpg" alt="">
+                            <h6 class="text-secondary-emphasis mt-1">2 min ago</h6>
+                            <h4>Hello world</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis labore asperiores voluptatibus quo nesciunt nemo alias a. Veniam, quidem modi aut soluta cupiditate, necessitatibus quod illum corporis rem, tempora nostrum?</p>
+                            <hr>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                                </svg>
+                                <span>(3) Comments</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// Post //-->
+                    <!-- Post -->
+                    <div class="card my-4">
+                        <div class="card-header">
+                            <img class="image rounded-circle border border-2" src="./media/avatar-01.png" alt="">
+                            <b>@aboodsaed</b>
+                        </div>
+                        <div class="card-body">
+                            <img class="w-100" src="./media/shuffle-04.jpg" alt="">
+                            <h6 class="text-secondary-emphasis mt-1">2 min ago</h6>
+                            <h4>Hello world</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis labore asperiores voluptatibus quo nesciunt nemo alias a. Veniam, quidem modi aut soluta cupiditate, necessitatibus quod illum corporis rem, tempora nostrum?</p>
+                            <hr>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                                </svg>
+                                <span>(3) Comments</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// Post //-->
+                    
+                </div>
+            </div>
+        </div>
+        <!--// Posts //-->
+
+    </div>
+    <!--// Main Content //-->
+    <!-- MODALs -->
+        <!-- Login modal -->
+        <div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Username:</label>
+                                <input type="text" class="form-control" id="username-input">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Password:</label>
+                                <input type="password" class="form-control" id="password-input">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" id="login-button">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Login modal //-->
+        <!-- Register modal -->
+        <div class="modal fade" id="register-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">name:</label>
+                                <input type="text" class="form-control" id="register-name-input">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Username:</label>
+                                <input type="text" class="form-control" id="register-username-input">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Password:</label>
+                                <input type="password" class="form-control" id="register-password-input">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Body:</label>
+                                <input type="file" class="form-control" id="register-image-input">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" id="register-button">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Register modal //-->
+        <!-- Create New Post modal -->
+        <div class="modal fade" id="create-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="create-post-title">Create A New Post</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Title:</label>
+                                <input type="text" class="form-control" id="post-title-input">
+                                <input type="hidden" class="form-control"  id="post-update-id">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Body:</label>
+                                <input type="text" class="form-control" id="post-body-input">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Image:</label>
+                                <input type="file" class="form-control" id="post-image-input">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" id="create-post-button">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Create New Post modal //-->
+        <!-- Delete Post modal -->
+        <div class="modal fade" id="delete-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="delete-post-title">Are You Sure Do Want To Delete The Post?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <input type="hidden" class="form-control"  id="post-delete-id">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" id="delete-post-button">Yes,Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Delete Post modal //-->
+    <!--// MODALs //-->
+        
+        <!-- Create New Post Button -->
+        <div  id="create-post-btn" class=" bg-primary position-fixed" data-bs-toggle="modal" data-bs-target="#create-post-modal">
+            +
+        </div>
+        <!--// Create New Post Button //-->
+
+        <!-- alert -->
+        <div id="liveAlertPlaceholder" class="alertt text-center show fade"></div>
+        <!--// alert //-->
+</body>
+<script src="./mainLogic.js"></script>
+<script src="./homeLogic.js"></script>
+</html>
